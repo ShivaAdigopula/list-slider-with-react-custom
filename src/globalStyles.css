@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+.center-line {
+  position: relative;
+  top: 0;
+  left: 50vw;
+  width: 5px;
+  height: 100px;
+  margin-bottom: -60px;
+  background-color: transparent;
+}
