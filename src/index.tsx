@@ -1,11 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import ReactDOM from "react-dom";
-import {
-  ScrollMenu,
-  VisibilityContext,
-  getItemsPos,
-  slidingWindow
-} from "react-horizontal-scrolling-menu";
+import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
 import { Card } from "./card";
 import "./globalStyles.css";
@@ -35,7 +30,7 @@ const getItems = () =>
 function App() {
   const [items] = React.useState(getItems);
   let centerLineRef = useRef(null);
-  const { dragStop, dragMove, dragging } = useDrag();
+  const { dragStop, dragging } = useDrag();
   const [selected, setSelected] = React.useState<string>("");
 
   const handleItemClick = (itemId: string) => ({
@@ -51,12 +46,12 @@ function App() {
   };
 
   const findClosestElement = () => {
-    const { x, y } = centerLineRef.current.getBoundingClientRect();
+    const { x } = centerLineRef.current.getBoundingClientRect();
 
     const allWithClass = Array.from(
       document.getElementsByClassName("react-horizontal-scrolling-menu--item")
     );
-    // console.log(allWithClass);
+
     let closestElement = allWithClass[0];
 
     let distance = Math.abs(x - closestElement.getBoundingClientRect().x);
