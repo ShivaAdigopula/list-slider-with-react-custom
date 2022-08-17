@@ -13,10 +13,6 @@ const start = 1990;
 const stop = 2022;
 const step = 1;
 
-// NOTE: embrace power of CSS flexbox!
-// import "./hideScrollbar.css";
-// import "./firstItemMargin.css";
-
 type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 
 const getId = (index: number) => `${index}`;
@@ -73,12 +69,7 @@ function App() {
 
     const closestElement = findClosestElement();
 
-    setSelected(
-      getItemById(closestElement.getAttribute("data-key")).key.replace(
-        "-separator",
-        ""
-      )
-    );
+    setSelected(closestElement.getAttribute("data-key"));
 
     if (isThouchpad) {
       ev.stopPropagation();
@@ -103,7 +94,7 @@ function App() {
         >
           {selected}
         </div>
-        <div onMouseLeave={dragStop}>
+        <div>
           <div className="center-line" ref={centerLineRef}></div>
           <ScrollMenu
             onInit={onInit}
